@@ -35,7 +35,7 @@ Loading data form file activity.csv, first we unzip file activity.zip, if needed
     actdata$date <- as.Date(actdata$date, "%Y-%m-%d")
 ```
 
-Basic summary of activity data:
+####Basic summary of activity data:
 
 ```r
     summary(actdata)
@@ -74,10 +74,10 @@ Calculation of mean values for steps taken per day, removing missing values
     #set names to daystep data
 ```
 
-Mean value of total number of steps taken per day is 10766.19  
-Median value ot total number of steps taken per day is 10765
+- Mean value of total number of steps taken per day is 10766.19  
+- Median value ot total number of steps taken per day is 10765
 
-From histogram we get more detail information about distribution of steps/day
+####From histogram we get more detail information about distribution of steps/day
 
 
 ```r
@@ -146,7 +146,7 @@ From histogram we get more detail information about distribution of steps/day
   
 - From total number of 17568 obrervations there are 2304 observation with missing values (coded 
 as NA in the data), meaning that 13.1 % of observations is not completed . 
-- To avoid bias to calculations I make some imputations/replasements for those missing values. 
+- To avoid bias to calculations I make some imputations/replacements for those missing values. 
 - Imputation strategy here is replase missing values with dayily average steps value.
 
 
@@ -157,7 +157,7 @@ as NA in the data), meaning that 13.1 % of observations is not completed .
     imputedata$steps <- ifelse(!is.na(imputedata$steps), imputedata$steps, intersteps[,2])
 ```
 
-Summary of the imputed data
+####Summary of the imputed data
 
 
 ```r
@@ -175,8 +175,13 @@ Summary of the imputed data
 ```
   
   
-I calculate mean, median and total values odf steps per day again to compare result with original  
-not imputed data  
+I calculate: 
+
+- mean,  
+- median and
+- total values  
+
+of steps per day again to compare result with original and imputed data  
   
 
 ```r
@@ -187,7 +192,7 @@ not imputed data
     totalImp <- sum(daystepsImp$steps, na.rm=TRUE)
 ```
   
-Histogram from data where missing values are replaced..
+Histogram from data where missing values are replaced.
   
 
 ```r
@@ -222,8 +227,8 @@ Effects of data imputation:
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-- No I investigate differences with weekdays and weekends. First I have to find weekpart, based on weekdays.   
-- After that I can make graphs to investigatian. 
+- Now I investigate differences with weekdays and weekends. First I have to find weekpart, based on weekdays.   
+- After that I can make graphs to investigation. 
 
 
 
@@ -260,9 +265,9 @@ I used Imputed data for this investigation.
 
 ![](./PA1_template_files/figure-html/unnamed-chunk-12-1.png) 
 
-Some variation can be noticed.  
-Anyway I put both to same plot to indentify that variation better.  
-Below looks like that on earlier (<1000) intrevals there is more steps on weekdays and after intervals 1000 there is more steps on weekend days. 
+- Some variation can be noticed.  
+- Anyway I put both to same plot to indentify that variation better.  
+- Below looks like that on earlier (<1000) intrevals there is more steps on weekdays and after intervals 1000 there is more steps on weekend days. 
 
 
 ```r
